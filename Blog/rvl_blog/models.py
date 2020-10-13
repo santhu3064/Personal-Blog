@@ -11,11 +11,11 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     text = models.TextField()
-    date_created = models.DateTimeField(default=now)
+    date_created = models.DateTimeField(default=now())
     publish_date = models.DateTimeField(blank=True, null=True)
 
     def publish(self):
-        self.publish_date = now
+        self.publish_date = now()
         self.save()
 
     def approve_comments(self):
